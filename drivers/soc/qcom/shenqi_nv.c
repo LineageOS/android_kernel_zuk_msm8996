@@ -191,5 +191,5 @@ static void __exit shenqi_nv_exit(void)
 	psmem_nv = NULL;
 }
 
-late_initcall(shenqi_nv_init);
+early_initcall(shenqi_nv_init);
 module_exit(shenqi_nv_exit);
