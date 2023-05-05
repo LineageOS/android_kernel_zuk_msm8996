@@ -2292,16 +2292,6 @@ static int path_lookupat(struct nameidata *nd, unsigned flags, struct path *path
 			err = -ENOTDIR;
 
 	if (!err) {
-		struct super_block *sb = nd->inode->i_sb;
-		if (sb->s_flags & MS_RDONLY) {
-			if (d_is_su(nd->path.dentry) && !su_visible()) {
-				path_put(&nd->path);
-				err = -ENOENT;
-			}
-		}
-	}
-
-	if (!err) {
 		*path = nd->path;
 		nd->path.mnt = NULL;
 		nd->path.dentry = NULL;
